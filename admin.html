@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LN Distribuidora — Panel de administración</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<!-- ============ LOGIN ============ -->
+<div class="login-screen" id="login-screen">
+  <div class="login-card">
+    <div class="brand-mark" style="width:48px;height:48px;font-size:1.6rem;">LN</div>
+    <h2>Panel de administración</h2>
+    <p class="sub">Acceso exclusivo para el equipo de LN Distribuidora</p>
+    <form id="login-form">
+      <div class="field">
+        <label for="login-user">Usuario</label>
+        <input type="text" id="login-user" placeholder="admin" required>
+      </div>
+      <div class="field">
+        <label for="login-pass">Contraseña</label>
+        <input type="password" id="login-pass" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn btn-accent btn-block">Iniciar sesión</button>
+    </form>
+    <p class="login-note">Demostración visual: cualquier dato ingresa al panel.</p>
+    <p class="login-note"><a href="index.html" style="color:var(--accent);">← Volver al sitio</a></p>
+  </div>
+</div>
+
+<!-- ============ PANEL ============ -->
+<div class="admin-shell" id="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="brand">
+      <div class="brand-name">LN Distribuidora<small>PANEL ADMIN</small></div>
+    </div>
+    <a href="#" data-view="dashboard" class="active">📊 Dashboard</a>
+    <a href="#" data-view="productos">📦 Productos</a>
+    <a href="#" data-view="categorias">🗂️ Categorías</a>
+    <a href="index.html">🌐 Ver sitio público</a>
+    <button class="btn btn-outline logout" style="margin-top:16px;">Cerrar sesión</button>
+  </aside>
+
+  <div class="admin-content">
+
+    <!-- Dashboard -->
+    <div class="admin-view active" id="view-dashboard">
+      <div class="admin-topbar">
+        <div><h2>Dashboard</h2><p>Resumen general del catálogo.</p></div>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-card"><div class="label">Productos totales</div><div class="value" id="metric-total">0</div></div>
+        <div class="metric-card"><div class="label">Activos</div><div class="value" id="metric-activos">0</div></div>
+        <div class="metric-card"><div class="label">Sin stock</div><div class="value" id="metric-sinstock">0</div></div>
+        <div class="metric-card"><div class="label">Categorías</div><div class="value" id="metric-categorias">0</div></div>
+      </div>
+      <p style="color:var(--text-muted); font-size:.85rem;">Los pedidos se consultan directamente por WhatsApp: este panel no gestiona pagos ni checkout.</p>
+    </div>
+
+    <!-- Productos -->
+    <div class="admin-view" id="view-productos">
+      <div class="admin-topbar">
+        <div><h2>Gestión de productos</h2><p>Agregá, editá o desactivá productos del catálogo.</p></div>
+        <button class="btn btn-accent" id="btn-nuevo-producto">+ Agregar producto</button>
+      </div>
+      <div class="table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr><th>Imagen</th><th>Nombre</th><th>Categoría</th><th>Marca</th><th>Precio</th><th>Estado</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="productos-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Categorías -->
+    <div class="admin-view" id="view-categorias">
+      <div class="admin-topbar">
+        <div><h2>Categorías</h2><p>Categorías disponibles y cantidad de productos por categoría.</p></div>
+      </div>
+      <div class="category-admin-list" id="categorias-admin-list"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ MODAL ALTA/EDICIÓN PRODUCTO ============ -->
+<div class="admin-modal-overlay" id="producto-modal-overlay">
+  <div class="admin-modal">
+    <h3 id="form-titulo">Agregar producto</h3>
+    <form id="producto-form">
+      <div class="form-grid">
+        <div class="field full">
+          <label>Nombre del producto</label>
+          <input type="text" name="nombre" required>
+        </div>
+        <div class="field">
+          <label>Categoría</label>
+          <select name="categoria" required></select>
+        </div>
+        <div class="field">
+          <label>Marca</label>
+          <input type="text" name="marca" required>
+        </div>
+        <div class="field">
+          <label>Presentación</label>
+          <input type="text" name="presentacion" placeholder="Ej: Caja x20" required>
+        </div>
+        <div class="field">
+          <label>Precio (ARS)</label>
+          <input type="number" name="precio" min="0" step="1" required>
+        </div>
+        <div class="field full">
+          <label>Imagen del producto</label>
+          <input type="file" name="imagen" accept="image/*">
+        </div>
+        <div class="field full">
+          <label>Descripción</label>
+          <textarea name="descripcion"></textarea>
+        </div>
+        <div class="field full">
+          <label style="display:flex; align-items:center; gap:8px;">
+            <input type="checkbox" name="disponible" style="width:auto;" checked> Producto disponible
+          </label>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:10px;">
+        <button type="button" class="btn btn-outline" id="form-cerrar">Cancelar</button>
+        <button type="submit" class="btn btn-accent">Guardar producto</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
