@@ -36,3 +36,18 @@ El catálogo se administran desde el panel privado, sin tocar código.
 -   **Marcar "Sin stock":** el producto se sigue viendo, pero no se puede agregar al pedido.
 -   **Desactivar un producto:** deja de verse en el sitio sin borrarlo, y se puede volver a activar.
 -   **Recibir pedidos:** llegan a tu WhatsApp como mensajes con la lista armada. El sitio no guarda pedidos.
+
+## Pantalla principal
+<a href="">
+  <img src="assets/Pantalla principal.png" alt="Texto alternativo" width="700" />
+</a>
+
+## Login Admin (Usuario: Admin ; Contraseña: admin)
+<a href="">
+  <img src="assets/Login.png" alt="Texto alternativo" width="400" />
+</a>
+
+## Dashboard Admin
+<a href="">
+  <img src="assets/Dashboard admin.png" alt="Texto alternativo" width="800" />
+</a>
